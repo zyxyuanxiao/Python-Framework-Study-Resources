@@ -6,7 +6,7 @@
 ## Flask传统io框架
 ```
 Flask_Projects      # 排序是按照我学习的时间排序
-├── flask_ok1       # 自己写的flask项目包含很多小项目(我的Flask就是从这里开始的了)
+├── flask_ok1       # 自己写的Flask项目包含很多小项目(我的Flask就是从这里开始的了)
 ├── game_client     # 自己的第一版app接口(写的很烂,留作纪念)
 ├── game_control    # 自己的第一版app管理后台前后不分离(写的非常烂,留作纪念)
 ├── zlbbs           # 知了课堂学习代码(有些能借鉴的地方)
@@ -15,7 +15,7 @@ Flask_Projects      # 排序是按照我学习的时间排序
 ├── Testmanager     # 自己写的测试人员管理后台(哈哈!没开始就烂尾了)
 ├── HuntingBall     # 新一版的app接口(当时我觉得挺完美的,后来...)
 ├── HuntingBallApp  # 新一版的app接口(优化版,不过现在看来并不完美)
-├── ginger          # 慕课网七月老师的Flask(值得学习的地方是继承Flask重写了一些方法和熟悉)
+├── ginger          # 慕课网七月老师的Flask(值得学习的地方是继承Flask重写了一些方法和属性)
 ├── f3otak          # 慕课网七月老师的Flask(封装的两个库,主要是学习了思路)
 ├── coding-265      # 慕课网忘记那个老师了Flask小程序开发(主要还是学习了某些思路)
 ├── flask-vue-cms   # Git上的某位大佬写的Flask+vue前后分离项目(主要还是学习某些思路)
