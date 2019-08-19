@@ -9,6 +9,7 @@ Flask_Projects      # 排序是按照我学习的时间排序
 ├── game_client     # 自己的第一版app接口(写的很烂,留作纪念)
 ├── game_control    # 自己的第一版app管理后台前后不分离(写的非常烂,留作纪念)
 ├── zlbbs           # 知了课堂学习代码(有些能借鉴的地方)
+├── flask-advance   # Flask的一些学习文档(直接打开里面的index.html即可)
 ├── demos           # 知了课堂学习代码(一些demo)
 ├── Testmanager     # 自己写的测试人员管理后台(哈哈!没开始就烂尾了)
 ├── HuntingBall     # 新一版的app接口(当时我觉得挺完美的,后来...)
@@ -22,6 +23,7 @@ Flask_Projects      # 排序是按照我学习的时间排序
 
 ```
 * 最后是我自己写的:Flask最佳实践(作为我最喜欢并且探索最久Python web框架)
+
 https://github.com/yangyuexiong/Flask_BestPractices
 
 
@@ -33,12 +35,14 @@ Tornado_Projects
 ├── 由于Tornado的的学习实践比较少后续会在这里继续添加
 ```
 * 这是我初步作的项目结构,后续完善。
+
 https://github.com/yangyuexiong/Tornado_Pratcices
 
 
 # Sanic Framework
 ## Sanic传说中性能超级高,高级快的支持异步的框架,并且极像Flask
 * 因为涉及的都是异步,还在构建中后续补上。
+
 https://github.com/yangyuexiong/Sanic_BestPractices
 
 

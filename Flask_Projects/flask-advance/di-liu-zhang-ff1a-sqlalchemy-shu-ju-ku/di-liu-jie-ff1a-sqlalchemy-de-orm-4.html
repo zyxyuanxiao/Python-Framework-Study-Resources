@@ -1,0 +1,972 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>第六节：SQLAlchemy的ORM（4） | Flask进阶课程课件</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-qi-jie-ff1a-sqlalchemy-de-orm-5.html" />
+    
+    
+    <link rel="prev" href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-wu-jie-ff1a-sqlalchemy-de-orm-3.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="6.6"
+        data-chapter-title="第六节：SQLAlchemy的ORM（4）"
+        data-filepath="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-liu-jie-ff1a-sqlalchemy-de-orm-4.md"
+        data-basepath=".."
+        data-revision="Wed Nov 22 2017 11:22:17 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter1.html">
+            
+                
+                    <a href="../chapter1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第一章：学前准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="di-er-zhang-ff1a-ren-shi-web.html">
+            
+                
+                    <a href="../di-er-zhang-ff1a-ren-shi-web.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第二章：认识web
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="di-san-zhang-ff1a-flask-ru-men-2014-2014-url.html">
+            
+                
+                    <a href="../di-san-zhang-ff1a-flask-ru-men-2014-2014-url.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第三章：URL与视图
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-yi-jie-ff1a-di-yi-ge-flask-cheng-xu.html">
+            
+                
+                    <a href="../di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-yi-jie-ff1a-di-yi-ge-flask-cheng-xu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        第一节：初始Flask
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-er-jie-ff1a-xiang-mu-pei-zhi.html">
+            
+                
+                    <a href="../di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-er-jie-ff1a-xiang-mu-pei-zhi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        第二节：项目配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-san-jie-ff1a-url-yu-shi-tu-han-shu.html">
+            
+                
+                    <a href="../di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-san-jie-ff1a-url-yu-shi-tu-han-shu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        第三节：URL与视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-si-jie-ff1a-guan-yu-xiang-ying.html">
+            
+                
+                    <a href="../di-san-zhang-ff1a-flask-ru-men-2014-2014-url/di-si-jie-ff1a-guan-yu-xiang-ying.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        第四节：关于响应
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第四章：模版
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-yi-jie-ff1a-mo-ban-jian-jie.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-yi-jie-ff1a-mo-ban-jian-jie.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        第一节：模版简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-er-jie-ff1a-jinja2-mo-ban-gai-shu.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-er-jie-ff1a-jinja2-mo-ban-gai-shu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        第二节：Jinja2模版概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-san-jie-ff1a-jinja2-guo-lv-qi.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-san-jie-ff1a-jinja2-guo-lv-qi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        第三节：过滤器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-si-jie-ff1a-jinja2-mo-ban-kong-zhi-yu-ju.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-si-jie-ff1a-jinja2-mo-ban-kong-zhi-yu-ju.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        第四节：控制语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-wu-jie-ff1a-jinja2-mo-ban-ce-shi-qi.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-wu-jie-ff1a-jinja2-mo-ban-ce-shi-qi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        第五节：测试器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-liu-jie-ff1a-hong-he-import-yu-ju.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-liu-jie-ff1a-hong-he-import-yu-ju.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        第六节：宏和import语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-qijie-ff1a-include-he-set-yu-ju.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-qijie-ff1a-include-he-set-yu-ju.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        第七节：include和set语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-ba-jie-ff1a-mo-ban-ji-cheng.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-ba-jie-ff1a-mo-ban-ji-cheng.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        第八节：模版继承
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-jiu-jie-ff1a-zhuan-yi.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-jiu-jie-ff1a-zhuan-yi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        第九节：转义
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-shi-jie-ff1a-shu-ju-lei-xing-he-yun-suan-fu.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-shi-jie-ff1a-shu-ju-lei-xing-he-yun-suan-fu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        第十节：数据类型和运算符
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-shi-yi-jie-ff1a-jing-tai-wen-jian-de-pei-zhi.html">
+            
+                
+                    <a href="../di-si-zhang-ff1a-flask-ru-men-ff08-mo-ban-ff09/di-shi-yi-jie-ff1a-jing-tai-wen-jian-de-pei-zhi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        第十一节：静态文件的配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="di-wu-zhang-ff1a-shi-tu-gao-ji.html">
+            
+                
+                    <a href="../di-wu-zhang-ff1a-shi-tu-gao-ji.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第五章：视图高级
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="di-wu-zhang-ff1a-shi-tu-gao-ji/di-yi-jie-ff1a-lei-shi-tu.html">
+            
+                
+                    <a href="../di-wu-zhang-ff1a-shi-tu-gao-ji/di-yi-jie-ff1a-lei-shi-tu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        第一节：类视图
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="di-wu-zhang-ff1a-shi-tu-gao-ji/di-er-jie-ff1a-lan-tu.html">
+            
+                
+                    <a href="../di-wu-zhang-ff1a-shi-tu-gao-ji/di-er-jie-ff1a-lan-tu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        第二节：蓝图和子域名
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第六章：SQLAlchemy数据库
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-yi-jie-ff1a-mysql-shu-ju-ku-de-an-zhuang.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-yi-jie-ff1a-mysql-shu-ju-ku-de-an-zhuang.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        第一节：MySQL数据库的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-yi-jie-ff1a-sqlalchemy-jie-shao-he-ji-ben-shi-yong.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-yi-jie-ff1a-sqlalchemy-jie-shao-he-ji-ben-shi-yong.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        第二节：SQLAlchemy介绍和基本使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-san-jie-ff1a-sqlalchemy-de-orm.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-san-jie-ff1a-sqlalchemy-de-orm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        第三节：SQLAlchemy的ORM（1）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-si-jie-ff1a-sqlalchemy-de-orm-2.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-si-jie-ff1a-sqlalchemy-de-orm-2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        第四节：SQLAlchemy的ORM（2）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-wu-jie-ff1a-sqlalchemy-de-orm-3.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-wu-jie-ff1a-sqlalchemy-de-orm-3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        第五节：SQLAlchemy的ORM（3）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.6" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-liu-jie-ff1a-sqlalchemy-de-orm-4.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-liu-jie-ff1a-sqlalchemy-de-orm-4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        第六节：SQLAlchemy的ORM（4）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-qi-jie-ff1a-sqlalchemy-de-orm-5.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-qi-jie-ff1a-sqlalchemy-de-orm-5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        第七节：SQLAlchemy的ORM（5）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-si-jie-ff1aflask-sqlalchemy.html">
+            
+                
+                    <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-si-jie-ff1aflask-sqlalchemy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        第八节：Flask-SQLAlchemy
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="di-qi-zhang-ff1a-flask-script.html">
+            
+                
+                    <a href="../di-qi-zhang-ff1a-flask-script.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第七章：Flask-Script
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="di-bazhang-ff1a-alembic-jiao-cheng.html">
+            
+                
+                    <a href="../di-bazhang-ff1a-alembic-jiao-cheng.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第八章：alembic教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="di-ba-zhang-ff1a-flask-migrate.html">
+            
+                
+                    <a href="../di-ba-zhang-ff1a-flask-migrate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第九章：Flask-Migrate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="di-jiu-zhang-ff1a-flask-wtf.html">
+            
+                
+                    <a href="../di-jiu-zhang-ff1a-flask-wtf.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第十章：Flask-WTF
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="di-shi-yi-zhang-ff1a-cookie-he-session.html">
+            
+                
+                    <a href="../di-shi-yi-zhang-ff1a-cookie-he-session.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第十一章：cookie和session
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="di-shi-zhang-ff1a-shang-xia-wen.html">
+            
+                
+                    <a href="../di-shi-zhang-ff1a-shang-xia-wen.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        第十二章：Flask上下文
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="di-shi-yi-zhang-ff1a-flask-xin-hao-ji-zhi.html">
+            
+                
+                    <a href="../di-shi-yi-zhang-ff1a-flask-xin-hao-ji-zhi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        第十三章：Flask信号机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="di-shi-si-zhang-ff1a-flask.html">
+            
+                
+                    <a href="../di-shi-si-zhang-ff1a-flask.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        第十四章：Flask-Restful
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="di-shi-si-zhang-ff1a-flask/di-yi-jie-ff1a-restful-api-gui-fan.html">
+            
+                
+                    <a href="../di-shi-si-zhang-ff1a-flask/di-yi-jie-ff1a-restful-api-gui-fan.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        第一节：Restful API规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="di-shi-si-zhang-ff1a-flask/di-er-jie-ff1a-flask-restful-cha-jian.html">
+            
+                
+                    <a href="../di-shi-si-zhang-ff1a-flask/di-er-jie-ff1a-flask-restful-cha-jian.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        第二节：Flask-Restful插件
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="di-shi-er-zhang-ff1a-memcached-jiao-cheng.html">
+            
+                
+                    <a href="../di-shi-er-zhang-ff1a-memcached-jiao-cheng.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        第十五章：memcached教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="di-shi-sizhang-ff1a-redis-jiao-cheng.html">
+            
+                
+                    <a href="../di-shi-sizhang-ff1a-redis-jiao-cheng.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        第十六章：redis教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="di-shi-liu-zhang-ff1a-csrf-gong-ji.html">
+            
+                
+                    <a href="../di-shi-liu-zhang-ff1a-csrf-gong-ji.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        第十七章：CSRF攻击
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Flask进阶课程课件</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="sqlalchemy&#x7684;orm&#xFF08;4&#xFF09;">SQLAlchemy&#x7684;ORM&#xFF08;4&#xFF09;</h1>
+<h2 id="&#x8868;&#x5173;&#x7CFB;&#xFF1A;">&#x8868;&#x5173;&#x7CFB;&#xFF1A;</h2>
+<p>&#x8868;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x5B58;&#x5728;&#x4E09;&#x79CD;&#xFF1A;&#x4E00;&#x5BF9;&#x4E00;&#x3001;&#x4E00;&#x5BF9;&#x591A;&#x3001;&#x591A;&#x5BF9;&#x591A;&#x3002;&#x800C;<code>SQLAlchemy</code>&#x4E2D;&#x7684;<code>ORM</code>&#x4E5F;&#x53EF;&#x4EE5;&#x6A21;&#x62DF;&#x8FD9;&#x4E09;&#x79CD;&#x5173;&#x7CFB;&#x3002;&#x56E0;&#x4E3A;&#x4E00;&#x5BF9;&#x4E00;&#x5176;&#x5B9E;&#x5728;<code>SQLAlchemy</code>&#x4E2D;&#x5E95;&#x5C42;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x65B9;&#x5F0F;&#x6A21;&#x62DF;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5148;&#x6765;&#x770B;&#x4E0B;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#xFF1A;</p>
+<h3 id="&#x5916;&#x952E;&#xFF1A;">&#x5916;&#x952E;&#xFF1A;</h3>
+<p>&#x5728;Mysql&#x4E2D;&#xFF0C;&#x5916;&#x952E;&#x53EF;&#x4EE5;&#x8BA9;&#x8868;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x66F4;&#x52A0;&#x7D27;&#x5BC6;&#x3002;&#x800C;SQLAlchemy&#x540C;&#x6837;&#x4E5F;&#x652F;&#x6301;&#x5916;&#x952E;&#x3002;&#x901A;&#x8FC7;ForeignKey&#x7C7B;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5916;&#x952E;&#x7EA6;&#x675F;&#x3002;&#x76F8;&#x5173;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;article&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>,autoincrement=<span class="hljs-keyword">True</span>)
+    title = Column(String(<span class="hljs-number">50</span>),nullable=<span class="hljs-keyword">False</span>)
+    content = Column(Text,nullable=<span class="hljs-keyword">False</span>)
+    uid = Column(Integer,ForeignKey(<span class="hljs-string">&apos;user.id&apos;</span>))
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;Article(title:%s)&gt;&quot;</span> % self.title
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;user&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>,autoincrement=<span class="hljs-keyword">True</span>)
+    username = Column(String(<span class="hljs-number">50</span>),nullable=<span class="hljs-keyword">False</span>)
+</code></pre>
+<p>&#x5916;&#x952E;&#x7EA6;&#x675F;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x9879;&#xFF1A;  </p>
+<ol>
+<li><code>RESTRICT</code>&#xFF1A;&#x7236;&#x8868;&#x6570;&#x636E;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x4F1A;&#x963B;&#x6B62;&#x5220;&#x9664;&#x3002;&#x9ED8;&#x8BA4;&#x5C31;&#x662F;&#x8FD9;&#x4E00;&#x9879;&#x3002;  </li>
+<li><code>NO ACTION</code>&#xFF1A;&#x5728;MySQL&#x4E2D;&#xFF0C;&#x540C;<code>RESTRICT</code>&#x3002;  </li>
+<li><code>CASCADE</code>&#xFF1A;&#x7EA7;&#x8054;&#x5220;&#x9664;&#x3002;  </li>
+<li><code>SET NULL</code>&#xFF1A;&#x7236;&#x8868;&#x6570;&#x636E;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x5B50;&#x8868;&#x6570;&#x636E;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E3A;NULL&#x3002;</li>
+</ol>
+<h3 id="&#x4E00;&#x5BF9;&#x591A;&#xFF1A;">&#x4E00;&#x5BF9;&#x591A;&#xFF1A;</h3>
+<p>&#x62FF;&#x4E4B;&#x524D;&#x7684;<code>User</code>&#x8868;&#x4E3A;&#x4F8B;&#xFF0C;&#x5047;&#x5982;&#x73B0;&#x5728;&#x8981;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x8981;&#x4FDD;&#x5B58;&#x7528;&#x6237;&#x7684;&#x90AE;&#x7BB1;&#x5E10;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x90AE;&#x7BB1;&#x5E10;&#x53F7;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x5FC5;&#x987B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x8868;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x7528;&#x6237;&#x7684;&#x90AE;&#x7BB1;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>user.id</code>&#x6765;&#x4F5C;&#x4E3A;&#x5916;&#x952E;&#x8FDB;&#x884C;&#x5F15;&#x7528;&#xFF0C;&#x5148;&#x6765;&#x770B;&#x4E0B;&#x90AE;&#x7BB1;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-python">    <span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> ForeignKey
+    <span class="hljs-keyword">from</span> sqlalchemy.orm <span class="hljs-keyword">import</span> relationship
+
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span><span class="hljs-params">(Base)</span>:</span>
+        __tablename__ = <span class="hljs-string">&apos;address&apos;</span>
+        id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+        email_address = Column(String,nullable=<span class="hljs-keyword">False</span>)
+        <span class="hljs-comment"># User&#x8868;&#x7684;&#x5916;&#x952E;&#xFF0C;&#x6307;&#x5B9A;&#x5916;&#x952E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x6570;&#x636E;&#x5E93;&#x8868;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7C7B;&#x540D;</span>
+        user_id = Column(Integer,ForeignKey(<span class="hljs-string">&apos;users.id&apos;</span>))
+        <span class="hljs-comment"># &#x5728;ORM&#x5C42;&#x9762;&#x7ED1;&#x5B9A;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x7ED1;&#x5B9A;&#x7684;&#x8868;&#x7684;&#x7C7B;&#x540D;&#xFF0C;</span>
+        <span class="hljs-comment"># &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;back_populates&#x662F;&#x901A;&#x8FC7;User&#x53CD;&#x5411;&#x8BBF;&#x95EE;&#x65F6;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x79F0;</span>
+        user = relationship(<span class="hljs-string">&apos;User&apos;</span>,back_populates=<span class="hljs-string">&quot;addresses&quot;</span>)
+
+        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span><span class="hljs-params">(self)</span>:</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;Address(email_address=&apos;%s&apos;)&gt;&quot;</span> % self.email_address
+
+    <span class="hljs-comment"># &#x91CD;&#x65B0;&#x4FEE;&#x6539;User&#x8868;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;addresses&#x5B57;&#x6BB5;&#xFF0C;&#x5F15;&#x7528;&#x4E86;Address&#x8868;&#x7684;&#x4E3B;&#x952E;</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(Base)</span>:</span>
+        __tablename__ = <span class="hljs-string">&apos;users&apos;</span>
+        id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+        name = Column(String(<span class="hljs-number">50</span>))
+        fullname = Column(String(<span class="hljs-number">50</span>))
+        password = Column(String(<span class="hljs-number">100</span>))
+        <span class="hljs-comment"># &#x5728;ORM&#x5C42;&#x9762;&#x7ED1;&#x5B9A;&#x548C;`Address`&#x8868;&#x7684;&#x5173;&#x7CFB;</span>
+        addresses = relationship(<span class="hljs-string">&quot;Address&quot;</span>,order_by=Address.id,back_populates=<span class="hljs-string">&quot;user&quot;</span>)
+</code></pre>
+<p>&#x5176;&#x4E2D;&#xFF0C;&#x5728;<code>User</code>&#x8868;&#x4E2D;&#x6DFB;&#x52A0;&#x7684;<code>addresses</code>&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>User.addresses</code>&#x6765;&#x8BBF;&#x95EE;&#x548C;&#x8FD9;&#x4E2A;user&#x76F8;&#x5173;&#x7684;&#x6240;&#x6709;address&#x3002;&#x5728;<code>Address</code>&#x8868;&#x4E2D;&#x7684;<code>user</code>&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>Address.user</code>&#x6765;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;user&#x3002;&#x8FBE;&#x5230;&#x4E86;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x3002;&#x8868;&#x5173;&#x7CFB;&#x5DF2;&#x7ECF;&#x5EFA;&#x7ACB;&#x597D;&#x4EE5;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x5E94;&#x8BE5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5148;&#x770B;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-python">  jack = User(name=<span class="hljs-string">&apos;jack&apos;</span>,fullname=<span class="hljs-string">&apos;Jack Bean&apos;</span>,password=<span class="hljs-string">&apos;gjffdd&apos;</span>)
+  jack.addresses = [Address(email_address=<span class="hljs-string">&apos;jack@google.com&apos;</span>),
+                  Address(email_address=<span class="hljs-string">&apos;j25@yahoo.com&apos;</span>)]
+  session.add(jack)
+  session.commit()
+</code></pre>
+<p>&#x9996;&#x5148;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x8FD9;&#x4E2A;<code>jack</code>&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x4E24;&#x4E2A;&#x90AE;&#x7BB1;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x63D0;&#x4EA4;&#x5230;&#x6570;&#x636E;&#x5E93;&#x5F53;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x64CD;&#x4F5C;<code>Address</code>&#x5E76;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x4FDD;&#x5B58;&#xFF0C;&#x800C;&#x662F;&#x5148;&#x6DFB;&#x52A0;&#x5230;&#x7528;&#x6237;&#x91CC;&#x9762;&#xFF0C;&#x518D;&#x4FDD;&#x5B58;&#x3002;</p>
+<h3 id="&#x4E00;&#x5BF9;&#x4E00;&#xFF1A;">&#x4E00;&#x5BF9;&#x4E00;&#xFF1A;</h3>
+<p>&#x4E00;&#x5BF9;&#x4E00;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF0C;&#x4ECE;&#x4EE5;&#x4E0A;&#x7684;&#x4E00;&#x5BF9;&#x591A;&#x4F8B;&#x5B50;&#x4E2D;&#x4E0D;&#x96BE;&#x53D1;&#x73B0;&#xFF0C;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x662F;<code>User</code>&#x8868;&#xFF0C;&#x800C;&#x591A;&#x5BF9;&#x5E94;&#x7684;&#x662F;<code>Address</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E00;&#x4E2A;<code>User</code>&#x5BF9;&#x8C61;&#x6709;&#x591A;&#x4E2A;<code>Address</code>&#x3002;&#x56E0;&#x6B64;&#x8981;&#x5C06;&#x4E00;&#x5BF9;&#x591A;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x5BF9;&#x4E00;&#xFF0C;&#x53EA;&#x8981;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;<code>User</code>&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;<code>Address</code>&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#xFF0C;&#x770B;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-python">  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;users&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+    name = Column(String(<span class="hljs-number">50</span>))
+    fullname = Column(String(<span class="hljs-number">50</span>))
+    password = Column(String(<span class="hljs-number">100</span>))
+    <span class="hljs-comment"># &#x8BBE;&#x7F6E;uselist&#x5173;&#x952E;&#x5B57;&#x53C2;&#x6570;&#x4E3A;False</span>
+    addresses = relationship(<span class="hljs-string">&quot;Address&quot;</span>,back_populates=<span class="hljs-string">&apos;addresses&apos;</span>,uselist=<span class="hljs-keyword">False</span>)
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Address</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;addresses&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+    email_address = Column(String(<span class="hljs-number">50</span>))
+    user_id = Column(Integer,ForeignKey(<span class="hljs-string">&apos;users.id&apos;</span>)
+    user = relationship(<span class="hljs-string">&apos;Address&apos;</span>,back_populates=<span class="hljs-string">&apos;user&apos;</span>)
+</code></pre>
+<p>&#x4ECE;&#x4EE5;&#x4E0A;&#x4F8B;&#x5B50;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x53EA;&#x8981;&#x5728;<code>User</code>&#x8868;&#x4E2D;&#x7684;<code>addresses</code>&#x5B57;&#x6BB5;&#x4E0A;&#x6DFB;&#x52A0;<code>uselist=False</code>&#x5C31;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x6548;&#x679C;&#x3002;&#x8BBE;&#x7F6E;&#x4E86;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x6548;&#x679C;&#x540E;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x90AE;&#x7BB1;&#x5230;<code>user.addresses</code>&#x5B57;&#x6BB5;&#x4E86;&#xFF0C;&#x53EA;&#x80FD;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#xFF1A;</p>
+<pre><code class="lang-python">user.addresses = Address(email_address=<span class="hljs-string">&apos;ed@google.com&apos;</span>)
+</code></pre>
+<h3 id="&#x591A;&#x5BF9;&#x591A;&#xFF1A;">&#x591A;&#x5BF9;&#x591A;&#xFF1A;</h3>
+<p>&#x591A;&#x5BF9;&#x591A;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8868;&#x6765;&#x4F5C;&#x4E3A;&#x8FDE;&#x63A5;&#xFF0C;&#x540C;&#x7406;&#x5728;<code>sqlalchemy</code>&#x4E2D;&#x7684;<code>orm</code>&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8868;&#x3002;&#x5047;&#x5982;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;<code>Teacher</code>&#x548C;&#x4E00;&#x4E2A;<code>Classes</code>&#x8868;&#xFF0C;&#x5373;&#x8001;&#x5E08;&#x548C;&#x73ED;&#x7EA7;&#xFF0C;&#x4E00;&#x4E2A;&#x8001;&#x5E08;&#x53EF;&#x4EE5;&#x6559;&#x591A;&#x4E2A;&#x73ED;&#x7EA7;&#xFF0C;&#x4E00;&#x4E2A;&#x73ED;&#x7EA7;&#x6709;&#x591A;&#x4E2A;&#x8001;&#x5E08;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x5178;&#x578B;&#x7684;&#x591A;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x90A3;&#x4E48;&#x901A;&#x8FC7;<code>sqlalchemy</code>&#x7684;<code>ORM</code>&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-python">  association_table = Table(<span class="hljs-string">&apos;teacher_classes&apos;</span>,Base.metadata,
+  Column(<span class="hljs-string">&apos;teacher_id&apos;</span>,Integer,ForeignKey(<span class="hljs-string">&apos;teacher.id&apos;</span>)),
+  Column(<span class="hljs-string">&apos;classes_id&apos;</span>,Integer,ForeignKey(<span class="hljs-string">&apos;classes.id&apos;</span>))
+  )
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Teacher</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;teacher&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+    tno = Column(String(<span class="hljs-number">10</span>))
+    name = Column(String(<span class="hljs-number">50</span>))
+    age = Column(Integer)
+    classes = relationship(<span class="hljs-string">&apos;Classes&apos;</span>,secondary=association_table,back_populates=<span class="hljs-string">&apos;teachers&apos;</span>)
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Classes</span><span class="hljs-params">(Base)</span>:</span>
+    __tablename__ = <span class="hljs-string">&apos;classes&apos;</span>
+    id = Column(Integer,primary_key=<span class="hljs-keyword">True</span>)
+    cno = Column(String(<span class="hljs-number">10</span>))
+    name = Column(String(<span class="hljs-number">50</span>))
+    teachers = relationship(<span class="hljs-string">&apos;Teacher&apos;</span>,secondary=association_table,back_populates=<span class="hljs-string">&apos;classes&apos;</span>)
+</code></pre>
+<p>&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x591A;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#x8868;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8868;&#xFF0C;&#x901A;&#x8FC7;<code>Table</code>&#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8868;&#x3002;&#x4E0A;&#x4F8B;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>teacher_classes</code>&#x4EE3;&#x8868;&#x7684;&#x662F;&#x4E2D;&#x95F4;&#x8868;&#x7684;&#x8868;&#x540D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;<code>Base</code>&#x7684;&#x5143;&#x7C7B;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x548C;&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x8981;&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x4E2A;&#x8868;&#xFF0C;&#x5176;&#x4E2D;<code>Column</code>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8868;&#x793A;&#x7684;&#x662F;&#x8FDE;&#x63A5;&#x8868;&#x7684;&#x5916;&#x952E;&#x540D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x5916;&#x952E;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x8981;&#x5916;&#x952E;&#x7684;&#x8868;&#x540D;&#x548C;&#x5B57;&#x6BB5;&#x3002;<br>  &#x521B;&#x5EFA;&#x5B8C;&#x4E2D;&#x95F4;&#x8868;&#x4EE5;&#x540E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5728;&#x4E24;&#x4E2A;&#x8868;&#x4E2D;&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;&#x6BD4;&#x5982;&#x5728;<code>Teacher</code>&#x4E2D;&#x6709;&#x4E00;&#x4E2A;<code>classes</code>&#x5C5E;&#x6027;&#xFF0C;&#x6765;&#x7ED1;&#x5B9A;<code>Classes</code>&#x8868;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;<code>secondary</code>&#x53C2;&#x6570;&#x6765;&#x8FDE;&#x63A5;&#x4E2D;&#x95F4;&#x8868;&#x3002;&#x540C;&#x7406;&#xFF0C;<code>Classes</code>&#x8868;&#x8FDE;&#x63A5;<code>Teacher</code>&#x8868;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;&#x5B9A;&#x4E49;&#x5B8C;&#x7C7B;&#x540E;&#xFF0C;&#x4E4B;&#x540E;&#x5C31;&#x662F;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#xFF0C;&#x8BF7;&#x770B;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-python">  teacher1 = Teacher(tno=<span class="hljs-string">&apos;t1111&apos;</span>,name=<span class="hljs-string">&apos;xiaotuo&apos;</span>,age=<span class="hljs-number">10</span>)
+  teacher2 = Teacher(tno=<span class="hljs-string">&apos;t2222&apos;</span>,name=<span class="hljs-string">&apos;datuo&apos;</span>,age=<span class="hljs-number">10</span>)
+  classes1 = Classes(cno=<span class="hljs-string">&apos;c1111&apos;</span>,name=<span class="hljs-string">&apos;english&apos;</span>)
+  classes2 = Classes(cno=<span class="hljs-string">&apos;c2222&apos;</span>,name=<span class="hljs-string">&apos;math&apos;</span>)
+  teacher1.classes = [classes1,classes2]
+  teacher2.classes = [classes1,classes2]
+  classes1.teachers = [teacher1,teacher2]
+  classes2.teachers = [teacher1,teacher2]
+  session.add(teacher1)
+  session.add(teacher2)
+  session.add(classes1)
+  session.add(classes2)
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-wu-jie-ff1a-sqlalchemy-de-orm-3.html" class="navigation navigation-prev " aria-label="Previous page: 第五节：SQLAlchemy的ORM（3）"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../di-liu-zhang-ff1a-sqlalchemy-shu-ju-ku/di-qi-jie-ff1a-sqlalchemy-de-orm-5.html" class="navigation navigation-next " aria-label="Next page: 第七节：SQLAlchemy的ORM（5）"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

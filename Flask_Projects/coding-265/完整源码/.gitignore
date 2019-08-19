@@ -1,5 +1,0 @@
-.idea/*
-*.pyc
-__pycache__
-.DS_Store
-web/static/upload
