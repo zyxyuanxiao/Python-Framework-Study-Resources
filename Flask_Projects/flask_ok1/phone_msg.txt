@@ -1,0 +1,16 @@
+名称:777 
+手机型号:mozilla/5.0 (linux; u; android 6.0.1; zh-cn; oppo r9s build/mmb29m) applewebkit/537.36 (khtml, like gecko) version/4.0 chrome/57.0.2987.132 mqqbrowser/8.3 mobile safari/537.36 
+版本号:6.0.1
+
+名称:666 
+手机型号:mozilla/5.0 (iphone; cpu iphone os 11_2_6 like mac os x) applewebkit/604.5.6 (khtml, like gecko) version/11.0 mobile/15d100 safari/604.1 
+版本号:11.2.6
+
+名称:1 
+手机型号:mozilla/5.0 (macintosh; intel mac os x 10_13_4) applewebkit/537.36 (khtml, like gecko) chrome/66.0.3359.139 safari/537.36 
+版本号:null
+
+名称:1 
+手机型号:mozilla/5.0 (linux; android 6.0; nexus 5 build/mra58n) applewebkit/537.36 (khtml, like gecko) chrome/66.0.3359.139 mobile safari/537.36 
+版本号:null
+

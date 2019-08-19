@@ -1,0 +1,57 @@
+
+
+《Flask+Vue全栈之-移动app开发》-【】（第x章）
+—————————如有问题评论即可,必定及时解答。—————————
+
+开发系统：Mac OS
+Python版本：3.6
+开发工具pycharm版本：2018.02
+Mysql版本：5.7.19
+数据库可视化工具：Navicat
+接口调试工具：postman
+Nosql：Redis
+
+一、项目介绍
+二、技术栈要求
+
+
+三、环境创建
+
+    1.创建
+        mkdir HuntingBallApp
+
+    2.使用pipenv管理包与独立的项目环境
+        (1)安装 pipenv
+            pip3 install pipenv
+        (2)创建 pipenv
+            cd HuntingBallApp
+            pipenv install
+        (3)激活虚拟环境
+            pipenv shell
+        (4)退出虚拟环境(通常是不需要退出的)
+            exit
+        (5)安装使用的包
+            pipenv install flask
+
+四、项目基本结构创建
+
+    1.构建项目基本结构
+        使用pycharm打开HuntingBallApp
+            图一
+    2.基本配置与启动
+        (1)config/config.py
+        (2)app/__init__.py
+        (3)run.py
+
+五、数据库连接与配置
+    (1)
+        pipenv install flask-sqlalchemy
+        pipenv install pymysql
+    (2)
+        创建数据库
+    (3)
+        config/config.py
+    (4)
+        exrs.py
+    (5)
+        app/__init__.py

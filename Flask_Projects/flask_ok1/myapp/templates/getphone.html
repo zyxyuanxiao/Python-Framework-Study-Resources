@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<head>
+    <title>获取设备信息</title>
+</head>
+<body>
+<div>
+    ios :<input placeholder="请输入你的名字.如:科比" id="ios">
+    <button onclick="get_ios_version()" style="width: 300px;height: 20px;">获取设备信息并提交</button>
+    <br>
+    <hr>
+    Android:<input placeholder="请输入你的名字.如:科比" id="android">
+    <button onclick="get_android_version()" style="width: 300px;height: 20px;">获取设备信息并提交</button>
+</div>
+<script type="text/javascript">
+
+    {#    var str = navigator.userAgent.toLowerCase();#}
+    {#    var ver = str.match(/cpu iphone os (.*?) like mac os/);#}
+    {#    if (!ver) {#}
+    {#        alert("请在Ios系统中打开");#}
+    {#    } else {#}
+    {#        alert("你当前的Ios系统版本为：" + ver[1].replace(/_/g, "."));#}
+    {#    }#}
+
+    {#    document.write("用户代理: " + navigator.userAgent);#}
+
+    function get_ios_version() {
+        console.log('this ios')
+        var ua = navigator.userAgent.toLowerCase();
+        var version = null;
+        if (ua.indexOf("like mac os x") > 0) {
+            var reg = /os [\d._]+/gi;
+            var v_info = ua.match(reg);
+            version = (v_info + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, "."); //得到版本号9.3.2或者9.0
+            {#            version = parseInt(version.split('.')[0]); // 得到版本号第一位#}
+        }
+        {#        console.log('this version')#}
+        {#        alert('版本号:' + version)#}
+        {#        alert(version)#}
+        {#        return version;#}
+        let formData = new FormData();
+        formData.append("version", version);
+        formData.append("os", ua);
+        formData.append("u", document.getElementById('ios').value);
+        fetch('http://192.168.101.132:5000/user/okccc', {
+            method: 'POST',
+            {#            headers: {'Content-Type': 'application/x-www-form-urlencoded'},#}
+            body: formData,
+        }).then(data => {
+            return data.json();
+        }).then(data => {
+            console.log(data);
+
+        })
+    }
+
+
+    function get_android_version() {
+        console.log('this android')
+        var ua = navigator.userAgent.toLowerCase();
+        var version = null;
+        if (ua.indexOf("android") > 0) {
+            var reg = /android [\d._]+/gi;
+            var v_info = ua.match(reg);
+            version = (v_info + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, "."); //得到版本号4.2.2
+            {#            version = parseInt(version.split('.')[0]);// 得到版本号第一位#}
+        }
+        {#        console.log('this version')#}
+        {#        alert('版本号:' + version)#}
+        {#        alert(version)#}
+        {#        return version;#}
+        let formData = new FormData();
+        formData.append("version", version);
+        formData.append("os", ua);
+        formData.append("u", document.getElementById('android').value);
+        fetch('http://192.168.101.132:5000/user/okccc', {
+            method: 'POST',
+            {#            headers: {'Content-Type': 'application/x-www-form-urlencoded'},#}
+            body: formData,
+        }).then(data => {
+            return data.json();
+        }).then(data => {
+            console.log(data);
+        })
+    }
+
+
+</script>
+</body>
+</html>
