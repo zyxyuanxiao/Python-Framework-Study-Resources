@@ -1,5 +1,6 @@
 # Python-Framework-Study-Resources
-Python框架学习与实践~包括Flask、Tornado、Sanic
+* Python框架学习与实践~包括Flask、Tornado、Sanic
+* 慎重下载整个文件因为接近 1个G
 
 # Flask Framework
 ## Flask传统io框架
@@ -31,7 +32,7 @@ https://github.com/yangyuexiong/Flask_BestPractices
 ## Tornado一个单线程继续协程的高性能异步框架(要很好的使用必须理解时间循环与协程的机制,Python3.5+已经支持了async与await)
 ```
 Tornado_Projects
-├── mx             # 慕课网bobby老师的Tornado前后分离项目(最要是学习了Tornado正确的异步使用)
+├── MxForum         # 慕课网bobby老师的Tornado前后分离项目(主要是学习了Tornado正确的异步使用与思路)
 ├── 由于Tornado的的学习实践比较少后续会在这里继续添加
 ```
 * 这是我初步作的项目结构,后续完善。
